@@ -36,25 +36,28 @@
 //n == accounts[i].length
 //1 <= m, n <= 50
 //1 <= accounts[i][j] <= 100
+#include<iostream>
+#include<vector>
 
+int maximumWealth(std::vector<std::vector<int>>& accounts) {
+    int m = accounts.size();
+    int highest = 0;
+    for (int i = 0; i < m; i++){
+        int n = accounts[i].size();
+        int sum = 0;
 
-class Solution {
-public:
-    int maximumWealth(vector<vector<int>>& accounts) {
-        int m = accounts.size();
-        int highest;
-        for (int i = 0; i < m; i++){
-            int n = accounts[i].size();
-            int sum = 0;
-
-            for (int j = 0; j < n; j++) {
-                sum += accounts[i][j];
-            }
-            if (sum > highest) {
-                highest = sum;
-            }
-        };
-
-        return highest;
+        for (int j = 0; j < n; j++) {
+            sum += accounts[i][j];
+        }
+        if (sum > highest) {
+            highest = sum;
+        }
     }
+    return highest;
+};
+
+int main () {
+    std::vector<std::vector<int>> accounts = {{1,5,7},{53,7,5}};
+    std::cout << maximumWealth(accounts);
+    return 0;
 };
